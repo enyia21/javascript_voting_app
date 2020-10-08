@@ -1,0 +1,53 @@
+
+10.times do 
+    firstName = Faker::Name.first_name
+    lastName = Faker::Name.unique.last_name
+    email = Faker::Internet.safe_email(name: lastName)
+    age = rand(10..50)
+    User.create(
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        age: age
+    )
+    
+    dbcName = Faker::JapaneseMedia::DragonBall.character
+    dbcCharacterRace = Faker::JapaneseMedia::DragonBall.race
+    dbcCharacterPlanet = Faker::JapaneseMedia::DragonBall.planet 
+    dbcCharacter = DragonBallCharacter.new(
+        name: dbcName,
+        race: dbcCharacterRace,
+        planet: dbcCharacterPlanet
+    )
+    while !(dbcCharacter.save)
+        dbcName = Faker::JapaneseMedia::DragonBall.character
+        # dbcCharacterRace = Faker::JapaneseMedia::DragonBall.race 
+        dbcCharacterPlanet = Faker::JapaneseMedia::DragonBall.planet 
+        dbcCharacter = DragonBallCharacter.new(
+            name: dbcName,
+            race: dbcCharacterRace,
+            planet: dbcCharacterPlanet
+        )
+    end
+end
+
+30.times do
+    dbcName = Faker::JapaneseMedia::DragonBall.character
+    # dbcCharacterRace = Faker::JapaneseMedia::DragonBall.race
+    dbcCharacterPlanet = Faker::JapaneseMedia::DragonBall.planet 
+    dbcCharacter = DragonBallCharacter.new(
+        name: dbcName,
+        race: dbcCharacterRace,
+        planet: dbcCharacterPlanet
+    )
+    while !(dbcCharacter.save)
+        dbcName = Faker::JapaneseMedia::DragonBall.character
+        # dbcCharacterRace = Faker::JapaneseMedia::DragonBall.race 
+        dbcCharacterPlanet = Faker::JapaneseMedia::DragonBall.planet 
+        dbcCharacter = DragonBallCharacter.new(
+            name: dbcName,
+            race: dbcCharacterRace,
+            planet: dbcCharacterPlanet
+        )
+    end
+end
